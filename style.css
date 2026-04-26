@@ -1,7 +1,9 @@
 :root { 
     --primary: #28a745; 
+    --primary-light: #a8e6cf; /* Xanh lá nhạt mới */
     --dark: #1a1a1a; 
     --price: #e44d26; 
+    --topbar-bg: #2c3e50;
 }
 
 body { 
@@ -11,6 +13,119 @@ body {
     padding-bottom: 100px; 
 }
 
+/* --- THANH TIỆN ÍCH TRÊN CÙNG --- */
+.top-bar {
+    background: var(--topbar-bg);
+    color: white;
+    padding: 8px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+}
+
+.top-bar-left, .top-bar-right {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.top-bar a { 
+    color: #ddd; 
+    text-decoration: none; 
+    transition: 0.3s;
+}
+
+.top-bar a:hover { color: var(--primary); }
+
+.badge {
+    background: #ff4757;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 10px;
+    font-size: 10px;
+    margin-left: 3px;
+}
+
+/* --- PHẦN SĂN SALE (FLASH SALE) - TÔNG XANH LÁ NHẠT --- */
+.flash-sale-container {
+    background: #fff;
+    margin: 20px 5%;
+    padding: 25px;
+    border-radius: 15px;
+    border-bottom: 5px solid var(--primary-light); /* Viền xanh nhạt */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.flash-sale-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.flash-sale-title {
+    color: var(--primary); /* Chữ xanh lá chính */
+    font-size: 26px;
+    font-weight: bold;
+    font-style: italic;
+    letter-spacing: 1px;
+}
+
+.countdown-wrapper {
+    font-weight: bold;
+    background: #f1fcf4; /* Nền xanh lá cực nhạt */
+    color: var(--primary);
+    padding: 10px 20px;
+    border-radius: 30px;
+    border: 1px solid var(--primary-light);
+}
+
+#timer { 
+    color: #1d7a33; 
+    font-size: 22px; 
+    margin-left: 5px;
+}
+
+.flash-sale-products {
+    display: flex;
+    overflow-x: auto;
+    gap: 20px;
+    padding: 10px 5px 20px 5px;
+}
+
+/* Ẩn thanh cuộn ngang trên Chrome/Safari để cho đẹp */
+.flash-sale-products::-webkit-scrollbar { display: none; }
+
+.flash-product {
+    min-width: 190px;
+    background: #fff;
+    border: 1px solid #f0f0f0;
+    padding: 15px;
+    border-radius: 12px;
+    text-align: center;
+    position: relative;
+    transition: 0.3s;
+}
+
+.flash-product:hover {
+    border-color: var(--primary-light);
+    transform: translateY(-5px);
+}
+
+.sale-badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: var(--primary-light); /* Tag giảm giá xanh nhạt */
+    color: #155724;
+    padding: 6px 12px;
+    font-weight: bold;
+    border-radius: 0 12px 0 12px;
+    font-size: 13px;
+}
+
+/* --- LIÊN HỆ --- */
 .contact-bar { 
     background: #333; 
     color: #ddd; 
@@ -32,6 +147,7 @@ header {
     text-align: center; 
 }
 
+/* --- NAVIGATION --- */
 nav { 
     background: #fff; 
     display: flex; 
@@ -59,6 +175,7 @@ nav button:hover, nav button.active {
     color: white; 
 }
 
+/* --- TÌM KIẾM --- */
 .search-box { text-align: center; margin: 25px; }
 .search-box input { 
     padding: 12px 25px; 
@@ -68,6 +185,7 @@ nav button:hover, nav button.active {
     outline: none; 
 }
 
+/* --- DANH SÁCH SẢN PHẨM --- */
 .container { 
     display: flex; 
     flex-wrap: wrap; 
@@ -112,6 +230,7 @@ nav button:hover, nav button.active {
     font-weight: bold; 
 }
 
+/* --- GIỎ HÀNG CỐ ĐỊNH --- */
 .cart-fixed { 
     position: fixed; 
     right: 25px; 
@@ -136,7 +255,8 @@ nav button:hover, nav button.active {
     font-weight: bold; 
 }
 
-#qrModal { 
+/* --- MODAL --- */
+#qrModal, .modal { 
     display: none; 
     position: fixed; 
     top: 0; 
@@ -159,6 +279,16 @@ nav button:hover, nav button.active {
     position: relative; 
 }
 
+.auth-form h2 { color: #333; margin-bottom: 20px; }
+.auth-form input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
 .qr-img { 
     width: 250px; 
     height: 250px; 
@@ -179,13 +309,15 @@ nav button:hover, nav button.active {
     background: var(--primary); 
     color: white; 
     border: none; 
-    padding: 10px; 
-    border-radius: 5px; 
+    padding: 12px; 
+    border-radius: 8px; 
     width: 100%; 
     cursor: pointer; 
     font-weight: bold; 
+    margin-top: 10px;
 }
 
+/* --- FOOTER --- */
 footer { 
     background: #111; 
     color: #aaa; 
@@ -195,3 +327,39 @@ footer {
 }
 
 footer b { color: #fff; }
+footer a { color: var(--primary); text-decoration: none; }
+/* --- TỐI ƯU CHO ĐIỆN THOẠI (Mobile) --- */
+@media screen and (max-width: 600px) {
+    /* Thu nhỏ chữ ở Header */
+    header h1 { font-size: 20px; }
+
+    /* Thanh menu chuyển thành dạng cuộn ngang */
+    nav { 
+        justify-content: flex-start; 
+        overflow-x: auto; 
+        white-space: nowrap; 
+        padding: 10px;
+    }
+    
+    /* Ô tìm kiếm thu gọn lại */
+    .search-box input { width: 80%; }
+
+    /* Quan trọng: Sản phẩm sẽ hiện 2 cột thay vì 4-5 cột */
+    .product { 
+        width: calc(50% - 20px); 
+        margin: 10px 5px; 
+        padding: 10px;
+    }
+
+    /* Thu nhỏ hình ảnh sản phẩm trên điện thoại */
+    .product img { height: 120px; }
+
+    /* Giỏ hàng cố định thu gọn lại cho đỡ choán chỗ */
+    .cart-fixed {
+        padding: 10px;
+        font-size: 13px;
+        right: 10px;
+        bottom: 10px;
+    }
+}
+
